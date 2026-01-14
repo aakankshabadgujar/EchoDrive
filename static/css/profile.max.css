@@ -1,0 +1,149 @@
+:root {
+    --bg: #007cff;
+    --danger: #ff4d4d;
+    --text-main: #333;
+    --card-bg: #f9f9f9;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Calibri, sans-serif;
+    display: flex; /* Establish flex layout for Sidebar + Main Content */
+    min-height: 100vh;
+    background-color: white;
+}
+
+/* Header/Profile Section */
+#hd {
+    width: 280px; /* Sidebar width */
+    background: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+}
+
+#hd-img {
+    height: 80px;
+    width: 80px;
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#hd-nm {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 15px 0;
+    color: var(--text-main);
+}
+
+#bio table {
+    width: 100%;
+    font-size: 16px;
+    border-collapse: collapse;
+}
+
+#bio td {
+    padding: 8px 0;
+}
+
+/* Upload Buttons */
+.frm-upl {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 25px; /* Modern pill shape */
+    background: var(--bg);
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.frm-upl:hover {
+    background: #005fcc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Main Content Area (File Grid) */
+#bd {
+    margin-left: 320px; /* Leave space for the sidebar */
+    flex-grow: 1;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 30px 0 0 30px; /* Stylish inner curve */
+    min-height: 100vh;
+}
+
+center {
+    display: flex; /* Changed from center to Flex Grid */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+/* Individual File Cards */
+.block {
+    width: 220px;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.block-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Handle long file names */
+}
+
+.block-size {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Action Buttons */
+.block-btn {
+    padding: 8px 15px;
+    margin: 5px;
+    font-size: 14px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.block-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Danger Button for Delete (Soft Delete) */
+a[href*="delete"] .block-btn {
+    color: var(--danger);
+    background: #fff0f0;
+}
+
+a[href*="delete"] .block-btn:hover {
+    background: #ffe0e0;
+}

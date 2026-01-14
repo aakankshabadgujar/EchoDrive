@@ -1,0 +1,116 @@
+:root {
+    --bg: #007cff;
+    --danger: #ff4d4d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Calibri, sans-serif;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column; /* Stack header on top of content for mobile */
+}
+
+/* Header Section (Mobile Sidebar equivalent) */
+#hd {
+    width: 100%;
+    background: #fff;
+    border-bottom: 2px solid var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+#hd-img {
+    height: 80px;
+    width: 80px;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+}
+
+#hd-nm {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+#bio {
+    width: 90%;
+    font-size: 16px;
+    text-align: center;
+}
+
+#bio table {
+    width: 100%;
+}
+
+/* Mobile Upload Button */
+.frm-upl {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    font-size: 18px;
+    padding: 12px;
+    color: white;
+    border-radius: 25px;
+    background: var(--bg);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* File List Area */
+#bd {
+    background: #f4f7f6;
+    width: 100%;
+    min-height: 60vh;
+    padding: 20px 0;
+}
+
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* File Blocks for Mobile */
+.block {
+    width: 90%; /* Wide blocks are easier to read on mobile */
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--bg); /* Visual accent */
+}
+
+.block-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.block-size {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+/* Action Buttons for touch */
+.block-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    min-width: 100px; /* Larger hit area for thumbs */
+}
+
+a[href*="delete"] .block-btn {
+    color: var(--danger);
+    border-color: var(--danger);
+}

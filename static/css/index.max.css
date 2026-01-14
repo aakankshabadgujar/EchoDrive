@@ -1,0 +1,81 @@
+:root {
+    --bg: #007cff;
+    --hover: #005fcc;
+}
+
+body {
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#hed {
+    font-size: 42px; /* Increased for better visibility as a header  */
+    color: white;
+    font-family: 'Segoe UI', Bahnschrift, sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#des {
+    font-family: 'Segoe UI', Cambria, serif;
+    color: white;
+    font-size: 20px;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+#img-sign {
+    display: flex; /* Switched to flex for better alignment than float */
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle background for contrast */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#mn {
+    border-radius: 12px;
+    width: 350px;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#sgn {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    margin-left: 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sgn-btn {
+    width: 280px;
+    margin: 10px 0;
+    padding: 15px;
+    background: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: inherit;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.sgn-btn:hover {
+    background: var(--hover);
+    transform: translateY(-2px); /* Adds a "production-grade" feel  */
+}

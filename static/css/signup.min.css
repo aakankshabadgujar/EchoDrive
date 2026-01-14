@@ -1,0 +1,86 @@
+:root {
+    --bg: #007cff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Calibri, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Hide decorative GIF on mobile to prioritize the form */
+#img {
+    display: none;
+}
+
+form {
+    /* Removed absolute positioning to allow natural vertical flow */
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 340px;
+    padding: 25px 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin: 20px auto;
+}
+
+#frm-p {
+    padding: 0;
+    margin: 10px 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+#frm-img {
+    margin-bottom: 15px;
+    border: 3px solid var(--bg);
+}
+
+.frm-inp {
+    text-align: left;
+    padding: 12px;
+    width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: auto; /* Removed fixed 25px height to prevent text clipping */
+    font-size: 18px;
+    margin: 8px 0;
+    box-sizing: border-box; /* Fixes padding overflow issues */
+}
+
+#frm-btn {
+    color: white;
+    background: var(--bg);
+    border-radius: 25px;
+    height: 50px; /* Enhanced touch target size for mobile */
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#frm-btn:active {
+    background: #005fcc;
+    transform: scale(0.98);
+}
+
+#frm-a {
+    display: block;
+    margin-top: 20px;
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 15px;
+}

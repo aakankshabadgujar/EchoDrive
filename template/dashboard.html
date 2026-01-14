@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/images/ic.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/profile.max.css">
+    <script type="text/javascript">
+        // Swapping to mobile CSS if screen aspect ratio is narrow
+        if (window.innerHeight/window.innerWidth < 3/5) {
+            document.getElementsByTagName('link')[1].href="/static/css/profile.min.css";
+        }
+    </script>
+    <script type="text/javascript" src="/static/script/profile.js"></script>
+    <title>Echo Drive - Dashboard</title>
+</head>
+<body>
+
+<div id="hd">
+    <img src="/static/avatars/blank.png" id="hd-img">
+    <br>
+    <p id="hd-nm">{{name}}</p>
+    <br>
+    <div id="bio">
+        <table>
+            <tr>
+                <td>Files: </td>
+                <td>{{nf}}</td>
+            </tr>
+            <tr>
+                <td>Used Space: </td>
+                <td>{{space}} MB</td>
+            </tr>
+            <tr>
+                <td>Available: </td>
+                <td><script>document.write(Math.floor((25 - (Number("{{space}}") || 0)/1024)*1000)/1000);</script> GB</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <form id="upload-form" method="POST" action="/upload/{{username}}" enctype="multipart/form-data">
+                        <label class="frm-upl" style="cursor: pointer; display: block; margin-bottom: 5px;">
+                            Select files
+                            <input type="file" name="files[]" multiple style="display:none;" id="file-input" onchange="frm_s()">
+                        </label>
+                        <button type="submit" class="frm-upl" style="width: 100%;">Upload to Cloud</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="/trash/{{username}}" style="color: #ff4d4d; text-decoration: none; font-weight: bold;">🗑️ View Trash</a>
+    </div>
+</div>
+
+<div id="bd" style="overflow-y:auto;">
+    <div style="padding: 10px; background: #f0f0f0; font-size: 0.9em; border-radius: 5px; margin: 10px;">
+        <span>My Drive</span> > <span>Home</span>
+    </div>
+    
+    <br>
+    <center>
+    {% if not files %}
+        <p style="color: grey;">No files found in this folder.</p>
+    {% endif %}
+
+    {% for i in files %}
+    <div class="block">
+        <div class="block-name">{{i.name}}</div>
+        <div class="block-size">Size: {{i.size}}</div>
+        <div style="margin-top: 10px;">
+    <a href="/delete/{{username}}/name/{{i.name}}">
+        <button class="block-btn" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 15px; cursor: pointer;">
+            Trash
+        </button>
+    </a>
+    
+    <a href="/download/{{username}}/name/{{i.name}}">
+        <button class="block-btn">Download</button>
+    </a>
+</div>
+    </div>
+    <br>
+    {% endfor %}
+    </center>
+</div>
+
+<script>
+    // Fix: Use quotes around Jinja variables in JS to stop IDE errors
+    var currentSpace = Number("{{space}}") || 0;
+    var limit = 25600 - currentSpace; 
+    var input = document.getElementById("file-input");
+    
+    if (input) {
+        input.oninput = function() {
+            var totalSize = 0;
+            var files = input.files;
+            var fileTooLarge = false;
+
+            for (var i = 0; i < files.length; i++) {
+                var sizeMb = files[i].size / (1024 * 1024);
+                if (sizeMb > 2048) { // 2GB individual limit
+                    fileTooLarge = true;
+                }
+                totalSize += sizeMb;
+            }
+
+            if (totalSize > limit) {
+                alert("Storage limit exceeded (25GB). Please upload smaller files.");
+                input.value = null;
+            } else if (fileTooLarge) {
+                alert("Individual file size cannot exceed 2GB.");
+                input.value = null;
+            }
+        };
+    }
+</script>
+</body>
+</html>

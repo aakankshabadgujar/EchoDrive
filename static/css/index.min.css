@@ -1,0 +1,73 @@
+:root {
+    --bg: #007cff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling on small screens */
+}
+
+#hed {
+    margin-top: 5vh;
+    font-size: 36px; /* Slightly larger for mobile headers */
+    color: white;
+    font-family: 'Segoe UI', Bahnschrift, sans-serif;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#des {
+    font-family: 'Segoe UI', Cambria, serif;
+    color: white;
+    font-size: 18px; /* Slightly smaller for mobile readability */
+    width: 90%;
+    text-align: center; /* Changed from 'left' for better mobile aesthetics */
+    margin: 20px auto;
+    line-height: 1.4;
+}
+
+#img-sign {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mn {
+    margin: 2vh 0;
+    border-radius: 9px;
+    width: 80%; /* Responsive width instead of fixed height */
+    max-width: 300px;
+    height: auto;
+}
+
+#sgn {
+    background: white;
+    padding: 20px 10px;
+    width: 90%;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 5vh;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sgn-btn {
+    width: 85%; /* Full-width buttons are better for mobile UX */
+    max-width: 280px;
+    margin: 10px 0;
+    padding: 15px;
+    background: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: bold;
+    color: white;
+    -webkit-tap-highlight-color: transparent; /* Clean touch interface */
+}

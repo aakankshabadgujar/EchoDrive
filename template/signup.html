@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/images/ic.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/signup.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign up - Echo Drive</title>
+</head>
+<body>
+
+<img src="/static/images/doc.gif" id="img">
+
+<form method="POST" action="/sign_up">
+    <p id="frm-p">Create Account</p>
+    <img id="frm-img" src="/static/avatars/blank.png" style="border-radius: 200px;height: 120px;width: 120px;">
+    
+    <input class="frm-inp" type="email" name="email" placeholder="Enter email ID" required>
+    
+    <input class="frm-inp" type="text" name="name" placeholder="Enter your full name" required>
+    
+    <input class="frm-inp" type="password" name="password" placeholder="Enter password" minlength="6" required>
+    
+    <br><br>
+    <button id="frm-btn">Sign up</button>
+    <br><br><br>
+    <a id="frm-a" href="/sign_in">Already have an account? Login</a>
+    <br><br>
+</form>
+
+<script type="text/javascript">
+    // Display error messages from Supabase (e.g., "User already exists")
+    if ("{{message}}" !== "") {
+        alert("{{message}}");
+    }
+</script>
+<script type="text/javascript" src="/static/script/signup.ui.js"></script>
+</body>
+</html>
