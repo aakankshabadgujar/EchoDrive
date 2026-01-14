@@ -1,70 +1,120 @@
-# Clouddrive (google drive clone)
-*	File storage and synchronization system. Now store your files in cloud and access it anywhere through internet.
-*	Made in python 3.x
 
-## Features:-
-*	Set file upload limits
-*	Set file size limit
-*	Shows space available and space consumed
-*	Stores user information and files (uploaded by user) in seperate folder
-*	No database used for login/sign up
-*	UI/UX is user friendly
-## Installation
-1) First install python3.6 in your respective system
-2) Download this source code
 
-### For macOS
+# ☁️ Echo Drive - Full Stack Cloud Storage
 
-Open terminal , execute the below code
+Echo Drive is a production-grade personal cloud storage solution. It provides a seamless, responsive interface for users to upload, manage, and retrieve files securely. Built with a focus on modern UX and robust backend architecture, Echo Drive leverages the power of Supabase for real-time authentication and cloud scaling.
+
+---
+
+## ✨ Key Features
+
+* **Secure Authentication**: Integrated with Supabase Auth for high-security login and registration flows.
+* **Real-time Dashboard**: A personalized view showing total file counts, used storage, and available space in real-time.
+* **Responsive UI/UX**: Optimized for both Desktop and Mobile views with custom CSS breakpoints.
+* **Smart Upload Feedback**: Visual status updates (e.g., "Uploading 3 files...") to keep users informed.
+* **Cloud Integrity**: Files are stored in Supabase Storage buckets, ensuring high availability and encrypted transfers.
+* **Trash System**: Soft-delete functionality allowing users to manage a recovery bin before permanent removal.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3, JavaScript (ES6+) |
+| **Backend** | Python (Flask) |
+| **Database** | PostgreSQL (via Supabase) |
+| **Storage** | Supabase Storage Buckets |
+| **Auth** | Supabase Auth (JWT) |
+| **Deployment** | Render / Gunicorn |
+
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/aakankshabadgujar/EchoDrive.git
+cd EchoDrive
 
 ```
-pip3 install flask
-```
 
-### For linux
+### 2. Install Dependencies
 
-Open terminal , execute the below code
-
-```
-sudo pip3 install flask
-```
-
-### For windows
-
-Open command prompt (search for this, you'll get it) , execute the below code
+```bash
+pip install -r requirements.txt
 
 ```
-pip3 install flask
+
+### 3. Environment Variables
+
+Create a file named **.env** in the root directory and add your Supabase credentials:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_KEY=your_supabase_anon_key
+
 ```
 
+### 4. Database Configuration
 
-## Execution
+Ensure your PostgreSQL tables (`users` and `files`) are set up in the Supabase SQL editor with the following columns:
 
-### For macOS
+**Users Table:**
 
-1) Open terminal in the respective folder (where you have downloaded the project) write the below code and hit enter
+* `id` (Primary Key)
+* `email`
+* `name`
 
-```flask run```
+**Files Table:**
 
-2) And then open web browser and go to -> http://127.0.0.1:5000
+* `id` (Primary Key)
+* `name`
+* `size`
+* `storage_path`
+* `owner_id` (Foreign Key to Users)
+* `is_deleted` (Boolean, default: **false**)
 
-### For Linux
+### 5. Run Locally
 
-1) Open terminal in the respective folder (where you have downloaded the project) write the below code and hit enter
+```bash
+python app.py
 
-```flask run```
+```
 
-2) And then open web browser and go to -> http://127.0.0.1:5000
+---
+
+## 🛡️ Database Schema
+
+The project uses a structured relational schema to track user metadata and file properties.
+
+* **Users Table**: Tracks unique IDs, names, and emails used for authentication and personalization.
+* **Files Table**: Tracks filenames, sizes, storage paths in the bucket, and soft-delete states (`is_deleted`).
+
+---
+
+## 🚀 Deployment
+
+This project is optimized for deployment on **Render**.
+
+1. **Push your code**: Ensure all files (app.py, requirements.txt, etc.) are in the **root** of the repository, not in a subfolder.
+2. **Create Web Service**: Connect your GitHub repo to a new Render Web Service.
+3. **Configure Environment**: Add `SUPABASE_URL` and `SUPABASE_KEY` as Environment Variables in the Render dashboard.
+4. **Start Command**:
+
+```bash
+gunicorn app:app
+
+```
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**.
+
+---
+
+**Developed by Aakanksha Badgujar**
 
 
-### For Windows
 
-1) Download this source code and double click on file -> app.py .
-
-2) And then open web browser and go to -> http://127.0.0.1:5000
-
-## Languages and tools used:
-<p align="left"> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
-
-## Author
-*	[abhineetraj1](http://github.com/abhineetraj1)
