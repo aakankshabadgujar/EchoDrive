@@ -16,6 +16,17 @@ Echo Drive is a production-grade personal cloud storage solution. It provides a 
 * **Trash System**: Soft-delete functionality allowing users to manage a recovery bin before permanent removal.
 
 ---
+## 📸 Screenshots
+
+### 1. Authentication Page
+The landing page for secure login and account creation.
+
+![Login Page](./screenshots/signin.png)
+
+### 2. User Dashboard
+The main interface showing the file list and storage management tools.
+
+![Dashboard](./screenshots/dashboard.png)
 
 ## 🛠️ Tech Stack
 
@@ -115,6 +126,7 @@ Distributed under the **MIT License**.
 ---
 
 **Developed by Aakanksha Badgujar**
+
 
 
 
