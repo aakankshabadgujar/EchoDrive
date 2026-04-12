@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8fafc;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-btn {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    background: #e2e8f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-btn.primary {
+    background: #3b82f6;
+    color: white;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px;
+    background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.primary-btn {
+    padding: 12px 20px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    padding: 12px 20px;
+    margin-left: 10px;
+    background: #e2e8f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* IMAGE */
+.hero-image img {
+    width: 400px;
+}
+
+/* FEATURES */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.feature-card {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* ========== ANIMATIONS ========== */
+
+/* Fade + Slide */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Apply animations */
+.hero-text {
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero-image {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* Feature cards animation */
+.feature-card {
+    animation: fadeUp 1s ease forwards;
+    transition: 0.3s;
+}
+
+/* Hover effects */
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Buttons hover */
+.primary-btn:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+.secondary-btn:hover {
+    background: #cbd5f5;
+    transform: scale(1.05);
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Navbar subtle animation */
+.navbar {
+    animation: fadeIn 1s ease;
+}
+
+/* Smooth page feel */
+* {
+    transition: all 0.2s ease;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #0f172a;
+    color: white;
+    margin-top: 40px;
+    font-size: 14px;
+}

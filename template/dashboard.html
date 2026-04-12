@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/images/ic.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/profile.max.css">
+    
+   
+    <script type="text/javascript" src="/static/script/profile.js"></script>
+    <title>Echo Drive - Dashboard</title>
+</head>
+<body>
+
+<div id="container">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <h2>EchoDrive</h2>
+        <p class="user-name">{{name}}</p>
+
+        <div class="stats">
+            <p><strong>Files:</strong> {{nf}}</p>
+            <p><strong>Used:</strong> {{space}} MB</p>
+            <p><strong>Limit:</strong> 25 GB</p>
+        </div>
+        <div class="storage-box">
+    <p>Storage Usage</p>
+
+    <div class="progress-bar">
+       <div 
+    class="progress-fill" 
+    data-usage="{{ ((space / 25600) * 100) | round(2) }}" >
+</div>
+    </div>
+
+    <p class="storage-text">
+        {{ (space/1024)|round(2) }} GB / 25 GB
+    </p>
+</div>
+
+        <form method="POST" action="/upload/{{username}}" enctype="multipart/form-data">
+            <input type="file" name="files[]" multiple id="file-input">
+            <button type="submit" class="btn-primary">Upload Files</button>
+        </form>
+
+        <a href="/trash/{{username}}" class="link-danger">View Trash</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main">
+
+        <div class="topbar">
+            <h3>My Files</h3>
+        </div>
+         {% if error %}
+    <div style="background:#ffe6e6; color:#b30000; padding:10px; border-radius:5px; margin:10px 0;">
+        {{error}}
+    </div>
+{% endif %}
+
+        <div class="file-grid">
+            {% for i in files %}
+            <div class="file-card">
+                <p class="file-name">{{i.name}}</p>
+                <p class="file-size">{{i.size}}</p>
+
+                <div class="actions">
+                    <a href="/download/{{username}}/name/{{i.name}}">
+                        <button>Download</button>
+                    </a>
+
+                    <a href="/share/{{username}}/name/{{i.name}}">
+                        <button>Share</button>
+                    </a>
+
+                    <a href="/delete/{{username}}/name/{{i.name}}">
+                        <button class="danger">Trash</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // Fix: Use quotes around Jinja variables in JS to stop IDE errors
+    var currentSpace = parseFloat("{{space}}") || 0;
+    var maxLimit = 25600;
+    var input = document.getElementById("file-input");
+
+if (input) {
+    input.onchange = function() {
+        var files = input.files;
+        var fileTooLarge = false;
+
+        for (var i = 0; i < files.length; i++) {
+            var sizeMb = files[i].size / (1024 * 1024);
+            if (sizeMb > 2048) {
+                fileTooLarge = true;
+            }
+        }
+
+        if (fileTooLarge) {
+            alert("Individual file size cannot exceed 2GB.");
+            // ❌ DON'T reset input → causes dialog bug
+            // input.value = null;
+        }
+    };
+}
+
+
+    const fill = document.querySelector(".progress-fill");
+    if (fill) {
+        const usage = fill.getAttribute("data-usage");
+        fill.style.width = usage + "%";
+    }
+
+</script>
+</body>
+</html>

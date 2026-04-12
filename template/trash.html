@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trash - EchoDrive</title>
+    <link rel="stylesheet" href="/static/css/profile.max.css">
+</head>
+<body>
+
+<div id="container">
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h2>EchoDrive</h2>
+        <p class="user-name">{{name}}</p>
+
+        <a href="/sign_in">⬅ Back to Dashboard</a>
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        <h2>🗑️ Trash</h2>
+
+        {% if not files %}
+            <p>No deleted files</p>
+        {% endif %}
+
+        <div class="file-grid">
+            {% for i in files %}
+            <div class="file-card">
+                <p class="file-name">{{i.name}}</p>
+                <p class="file-size">{{i.size}}</p>
+
+                <div class="actions">
+                    <a href="/restore/{{username}}/name/{{i.name}}">
+                        <button>Restore</button>
+                    </a>
+
+                    <a href="/delete_permanent/{{username}}/name/{{i.name}}">
+                        <button class="danger">Delete Forever</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

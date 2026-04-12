@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/profile.max.css">
+    <title>Echo Drive - Activity Logs</title>
+</head>
+
+<body>
+
+<div id="hd">
+    <img src="/static/avatars/blank.png" id="hd-img">
+    <p id="hd-nm">{{name}}</p>
+
+    <div style="margin-top: 20px;">
+        <a href="/sign_in" style="text-decoration:none;">
+            <button class="frm-upl">⬅ Back to Dashboard</button>
+        </a>
+    </div>
+</div>
+
+<div id="bd" style="overflow-y:auto;">
+    <div style="padding: 10px; background: #f0f0f0; border-radius: 5px; margin: 10px;">
+        <b>Activity Logs</b>
+    </div>
+
+    <center>
+
+    {% if not logs %}
+        <p style="color: grey;">No activity recorded yet.</p>
+    {% endif %}
+
+    {% for log in logs %}
+    <div class="block">
+        <div class="block-name">
+            {{log.action}} → {{log.file_name}}
+        </div>
+
+        <div class="block-size">
+            Time: {{log.timestamp}}
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+
+    </center>
+</div>
+
+</body>
+</html>
