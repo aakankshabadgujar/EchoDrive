@@ -289,13 +289,11 @@ def share_file(username, name):
     file_path = file_data.data[0]['storage_path']
 
     # Generate signed URL for sharing (5 min)
-    res = supabase.storage.from_("my-drive").create_signed_url(file_path, 300)
+    # Generate app-level share link so file is decrypted before opening
+    share_link = url_for('main15', username=username, name=name, _external=True)
 
-    if res.get('signedURL'):
-        add_log(user_id, "SHARE", name)
-        return render_template("share.html", link=res['signedURL'])
-
-    return "Error generating link"
+    add_log(user_id, "SHARE", name)
+    return render_template("share.html", link=share_link)
 
 
 @app.route("/logs/<username>")
